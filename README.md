@@ -1,19 +1,16 @@
 # aria-control-file-parser
 
-> Parse aria2c control file from cmd line.
+> Parse `aria2c` control files from the command line.
 
-When you hit ctrl-C while downloading is still in progress, aria2 leaves control file. Running the same command line(you need to know the original link), aria2 starts resuming last download.  
+When you hit ctrl-C while downloading is still in progress, `aria2` leaves control file. Running the same command line(you need to know the original link), `aria2` starts resuming last download.  
 
 How can you resume a download without knowing the original download link?
 
-According to aria technical note, the .aria2 (Control File) contain the hash info of the magnet link, so parse the file we could get the original magnet link.
+According to aria technical note, the _.aria2_ (Control File) contains the hash info of the magnet link, so we can parse the file to get the original magnet link.
 
-See this issue(https://github.com/aria2/aria2/issues/792). 
+See this [issue](https://github.com/aria2/aria2/issues/792).
 
-Also @alphatr write a tool transform .aria2 file to a magnet link use javascript.
-
-
-```
+```log
 # ================================================================
 #  0                   1                   2                   3
 #  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -45,30 +42,23 @@ Also @alphatr write a tool transform .aria2 file to a magnet link use javascript
 # ================================================================
 ```
 
-## how to run
+## How to Use
 
 ```bash
-python3  aria2_to_magnet.py dahufa.aria2
+python3  aria2_parser.py dahufa.aria2
 ```
 
-output
-```
+Output:
+```log
 magnet:?xt=urn:btih:959E2ECEB954313D3869EFF7924CA7CD8DE739
 ```
 
-with multiple files, folder
+With multiple files, folder:
 ```bash
-python3 aria2_to_magnet.py dahufa.aria2 dahufa.aria2 ./folder
+python3 aria2_parser.py dahufa.aria2 dahufa.aria2 ./folder
 ```
 
-reading aria2 files from folder recursively
+Reading aria2 files from folder recursively:
 ```bash
-python3 aria2_to_magnet.py ./ -r
+python3 aria2_parser.py ./ -r
 ```
-
-## python2
-
-use branch 
-
-https://github.com/smasterfree/aria-control-file-parser/tree/python2
-
