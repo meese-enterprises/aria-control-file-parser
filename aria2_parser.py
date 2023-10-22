@@ -100,7 +100,7 @@ def file_parser(handler_func):
 #         +-------------------------------------------------------+
 #                 Repeated in (NUM IN-FLIGHT) PIECE times
 
-# more detail
+# More information available at:
 # https://aria2.github.io/manual/en/html/technical-notes.html
 # ================================================================
 def parse_aria_control_file(file_name):

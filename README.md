@@ -2,13 +2,9 @@
 
 > Parse `aria2c` control files from the command line.
 
-When you hit ctrl-C while downloading is still in progress, `aria2` leaves control file. Running the same command line(you need to know the original link), `aria2` starts resuming last download.  
+The _.aria2_ (Control File) contains the hash info of the magnet link, so we can parse the file to get the original magnet link. This allows you to resume the download where it left off if it was cancelled or interrupted.
 
-How can you resume a download without knowing the original download link?
-
-According to aria technical note, the _.aria2_ (Control File) contains the hash info of the magnet link, so we can parse the file to get the original magnet link.
-
-See this [issue](https://github.com/aria2/aria2/issues/792).
+See [this issue](https://github.com/aria2/aria2/issues/792).
 
 ```log
 # ================================================================
@@ -45,20 +41,17 @@ See this [issue](https://github.com/aria2/aria2/issues/792).
 ## How to Use
 
 ```bash
-python3  aria2_parser.py dahufa.aria2
+python3 aria2_parser.py dahufa.aria2
 ```
 
-Output:
-```log
-magnet:?xt=urn:btih:959E2ECEB954313D3869EFF7924CA7CD8DE739
-```
+With multiple files or with a directory:
 
-With multiple files, folder:
 ```bash
 python3 aria2_parser.py dahufa.aria2 dahufa.aria2 ./folder
 ```
 
-Reading aria2 files from folder recursively:
+Reading _aria2_ files from folder recursively:
+
 ```bash
 python3 aria2_parser.py ./ -r
 ```
