@@ -152,7 +152,7 @@ def parse_aria_control_file(file_name):
       f.seek(14 + hash_length)
       total_length_binary = f.read(8)
       total_length = int.from_bytes(total_length_binary, "big")
-      indentedPrint(f"Total length: {total_length} bytes")
+      indentedPrint(f"File length: {total_length} bytes")
 
       # Read UPLOAD LENGTH
       f.seek(22 + hash_length)
@@ -172,6 +172,18 @@ def parse_aria_control_file(file_name):
       bitfield = bitfield_binary.hex().upper()
       if args.verbose:
         indentedPrint(f"Bitfield: {bitfield}")
+      
+      # Read the number of bytes downloaded so far
+      f.seek(34 + hash_length)
+      downloaded_size = 0
+      for x in range(bitfield_length):
+        num_bits_set = (str(bin(int.from_bytes(f.read(1), "big"))).count("1"))
+        downloaded_size += (num_bits_set * piece_length)
+      indentedPrint(f"Downloaded length: {downloaded_size} bytes")
+
+      # Print the overall download progress
+      download_progress = (downloaded_size / total_length) * 100
+      indentedPrint(f"Download progress: {download_progress:.2f}%")
 
       # Read NUM IN-FLIGHT PIECE
       f.seek(34 + hash_length + bitfield_length)
