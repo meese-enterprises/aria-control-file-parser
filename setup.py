@@ -17,7 +17,7 @@ NAME = "parse_aria_control_file"
 DESCRIPTION = "Parse the information out of aria2 control files."
 URL = "https://github.com/meese-enterprises/aria-control-file-parser"
 REQUIRES_PYTHON = ">=3.0.0"
-VERSION = "1.0.0"
+VERSION = None # See __version__.py
 
 here = os.path.abspath(os.path.dirname(__file__))
 
