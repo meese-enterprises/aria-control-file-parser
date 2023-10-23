@@ -77,7 +77,7 @@ class UploadCommand(Command):
 
 setup(
   name=NAME,
-  version=VERSION,
+  version=about["__version__"],
   description=DESCRIPTION,
   long_description=long_description,
   long_description_content_type="text/markdown",
