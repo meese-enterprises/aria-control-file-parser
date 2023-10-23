@@ -34,3 +34,10 @@ pip-delete-this-directory.txt
 # PyBuilder
 target/
 venv
+
+# pyenv
+.python-version
+
+# virtualenv
+venv/
+ENV/

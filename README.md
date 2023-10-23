@@ -1,5 +1,7 @@
 # aria-control-file-parser
 
+[![PyPI](https://img.shields.io/pypi/v/parse_aria_control_file.svg)](https://pypi.org/project/parse_aria_control_file/)
+
 > Parse `aria2c` control files from the command line.
 
 The _.aria2_ (Control File) contains the hash info of the magnet link, so we can parse the file to get the original magnet link. This allows you to resume the download where it left off if it was cancelled or interrupted.
@@ -33,25 +35,32 @@ See [this issue](https://github.com/aria2/aria2/issues/792).
 #         +-------------------------------------------------------+
 #                 Repeated in (NUM IN-FLIGHT) PIECE times
 
-# more detail
+# More information available at:
 # https://aria2.github.io/manual/en/html/technical-notes.html
 # ================================================================
 ```
 
 ## How to Use
 
-```bash
+```shell
 python3 aria2_parser.py dahufa.aria2
 ```
 
 With multiple files or with a directory:
 
-```bash
+```shell
 python3 aria2_parser.py dahufa.aria2 dahufa.aria2 ./folder
 ```
 
 Reading _aria2_ files from folder recursively:
 
-```bash
+```shell
 python3 aria2_parser.py ./ -r
+```
+
+## Build
+
+```shell
+python3 setup.py build
+python3 setup.py install
 ```

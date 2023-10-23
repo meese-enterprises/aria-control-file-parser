@@ -5,9 +5,10 @@ import glob
 import textwrap
 """
 Usage:
-windows: python aria2_parser.py [path]|[-r --recursive]
-bash:    python3 aria2_parser.py [path]|[-r --recursive]
-example: python aria2_parser.py ./
+
+Windows: python aria2_parser.py [path]|[-r --recursive]
+Bash:    python3 aria2_parser.py [path]|[-r --recursive]
+Example: python aria2_parser.py ./
 """
 
 def main():
@@ -27,10 +28,10 @@ def indentedPrint(string, indent=1):
 def link(uri, label=None):
     if label is None: 
         label = uri
-    parameters = ''
+    parameters = ""
 
     # OSC 8 ; params ; URI ST <name> OSC 8 ;; ST 
-    escape_mask = '\033]8;{};{}\033\\{}\033]8;;\033\\'
+    escape_mask = "\033]8;{};{}\033\\{}\033]8;;\033\\"
 
     return escape_mask.format(parameters, uri, label)
 
@@ -133,7 +134,7 @@ def parse_aria_control_file(file_name):
       # Generate magnet link to torrent file
       if args.magnet:
         magnet_link = "magnet:?xt=urn:btih:" + info_hash
-        hyperlink = link(f'https://btdig.com/{info_hash}', magnet_link)
+        hyperlink = link(f"https://btdig.com/{info_hash}", magnet_link)
         if args.unwrapped:
           indentedPrint(f"Magnet link: {hyperlink}")
         else:
